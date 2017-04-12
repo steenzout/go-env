@@ -4,7 +4,24 @@ import (
 	"os"
 	"testing"
 
+	"fmt"
+
 	"github.com/stretchr/testify/suite"
+)
+
+const (
+	// EnvStr name of the environment variable that contains a time duration value.
+	EnvDuration = "ENV_DURATION"
+	// EnvInt name of the environment variable that contains an integer value.
+	EnvInt = "ENV_INT"
+	// EnvUnknown inexistent environment variable.
+	EnvUnknown = "ENV_UNKNOWN"
+	// EnvStr name of the environment variable that contains a string value.
+	EnvStr = "ENV_STR"
+	// EnvStrSlice name of the environment variable that contains a string slice value.
+	EnvStrSlice = "ENV_STR_SLICE"
+	// EnvStrSliceDelimiter the delimiter used to split the string slice value.
+	EnvStrSliceDelimiter = ","
 )
 
 // PackageTestSuite this package test suite.
@@ -15,8 +32,10 @@ type PackageTestSuite struct {
 // SetupTest sets test environment variables.
 func (s PackageTestSuite) SetupTest() {
 	os.Clearenv()
+	os.Setenv(EnvDuration, "1s")
 	os.Setenv(EnvInt, "1")
 	os.Setenv(EnvStr, "str")
+	os.Setenv(EnvStrSlice, fmt.Sprintf("element1%s elementN ", EnvStrSliceDelimiter))
 }
 
 // TearDownTest clears all environment variables.
