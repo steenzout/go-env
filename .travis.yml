@@ -1,8 +1,7 @@
 language: go
 cache:
   directories:
-    - ${GOPATH}/src/github.com
-    - ${GOPATH}/src/golang.org
+    - ${GOPATH}/src/github.com/steenzout/go-env/vendor
 go: 1.6
 sudo: false
 
