@@ -4,7 +4,17 @@
 [![Build Status](https://travis-ci.org/steenzout/go-env.svg?branch=master)](https://travis-ci.org/steenzout/go-env/)
 [![Coverage Status](https://coveralls.io/repos/steenzout/go-env/badge.svg?branch=master&service=github)](https://coveralls.io/github/steenzout/go-env?branch=master)
 
-This repository is used as starting point for Go projects.
+Library that uses convention to read configuration paramaters from the environment.
+
+
+## environment variables
+
+## app:Redis
+
+- *REDIS_DB*: environment variable that contains the Redis database.
+- *REDIS_PASSWORD*: environment variable that contains the Redis password.
+- *REDIS_PORT*: environment variable that contains the Redis port.
+- *REDIS_HOST*: environment variable that contains the Redis host.
 
 
 [license]:  https://raw.githubusercontent.com/steenzout/go-env/master/LICENSE   "Apache License 2.0"
