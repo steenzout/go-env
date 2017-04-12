@@ -13,13 +13,17 @@ Library that uses convention to read configuration paramaters from the environme
 
 - **REDIS_DB**: environment variable that contains the Redis database.
 - **REDIS_PASSWORD**: environment variable that contains the Redis password.
-- **REDIS_PORT**: environment variable that contains the Redis port.
+- **REDIS_PORT**: environment variable that contains the Redis port (default: `6379`).
 - **REDIS_HOST**: environment variable that contains the Redis host.
 
 
 ## app:Resque
-
-- **RESQUE_QUEUE**: environment variable that contains the Resque queue.
+å
+- **RESQUE_COUNT**: environment variable that contains the number of Resque workers to be spawned (default: `1`).
+- **RESQUE_INTERVAL**: environment variable to define, in seconds, the polling frequency (default: `5s`).
+- **RESQUE_PIDFILE**: environment variable that contains the PID file location..
+- **RESQUE_QUEUE**: environment variable that contains the name of a single Resque queue.
+- **RESQUE_QUEUES**: environment variable that contains a list of Resque queue names (default: `*`).
 
 
 ## cloud:AWS
