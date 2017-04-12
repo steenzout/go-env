@@ -1,16 +1,9 @@
 package env_test
 
 import (
-	"github.com/steenzout/go-env"
-)
+	"time"
 
-const (
-	// EnvInt name of the environment variable that contains an integer value.
-	EnvInt = "ENV_INT"
-	// EnvUnknown inexistent environment variable.
-	EnvUnknown = "ENV_UNKNOWN"
-	// EnvStr name of the environment variable that contains a string value.
-	EnvStr = "ENV_STR"
+	"github.com/steenzout/go-env"
 )
 
 // OptionalTestSuite test suite for functions in optional.go.
@@ -18,16 +11,36 @@ type OptionalTestSuite struct {
 	PackageTestSuite
 }
 
-// Test check behavior of GetOptionalInt().
+// TestGetOptionalDuration check behavior of GetOptionalDuration().
+func (s OptionalTestSuite) TestGetOptionalDuration() {
+	d := 10 * time.Second
+
+	s.Equal(d, *env.GetOptionalDuration(EnvUnknown, &d))
+	s.Equal(d, *env.GetOptionalDuration(EnvStr, &d))
+	s.Equal(d, *env.GetOptionalDuration(EnvInt, &d))
+	s.Equal(1*time.Second, *env.GetOptionalDuration(EnvDuration, &d))
+}
+
+// TestGetOptionalInt check behavior of GetOptionalInt().
 func (s OptionalTestSuite) TestGetOptionalInt() {
 	s.Equal(0, env.GetOptionalInt(EnvUnknown, 0))
 	s.Equal(0, env.GetOptionalInt(EnvStr, 0))
 	s.Equal(1, env.GetOptionalInt(EnvInt, 0))
 }
 
-// Test check behavior of GetOptionalString().
+// TestGetOptionalString check behavior of GetOptionalString().
 func (s OptionalTestSuite) TestGetOptionalString() {
 	s.Equal("default", env.GetOptionalString(EnvUnknown, "default"))
 	s.Equal("str", env.GetOptionalString(EnvStr, "default"))
 	s.Equal("1", env.GetOptionalString(EnvInt, "default"))
+}
+
+// TestGetOptionalStringSlice check behavior of GetOptionalStringSlice().
+func (s OptionalTestSuite) TestGetOptionalStringSlice() {
+	d := []string{"A", "B"}
+
+	s.Equal(d, env.GetOptionalStringSlice(EnvUnknown, EnvStrSliceDelimiter, d))
+	s.Equal([]string{"str"}, env.GetOptionalStringSlice(EnvStr, EnvStrSliceDelimiter, d))
+	s.Equal([]string{"1"}, env.GetOptionalStringSlice(EnvInt, EnvStrSliceDelimiter, d))
+	s.Equal([]string{"element1", "elementN"}, env.GetOptionalStringSlice(EnvStrSlice, EnvStrSliceDelimiter, d))
 }
