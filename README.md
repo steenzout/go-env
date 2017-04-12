@@ -18,7 +18,7 @@ Library that uses convention to read configuration paramaters from the environme
 
 
 ## app:Resque
-å
+
 - **RESQUE_COUNT**: environment variable that contains the number of Resque workers to be spawned (default: `1`).
 - **RESQUE_INTERVAL**: environment variable to define, in seconds, the polling frequency (default: `5s`).
 - **RESQUE_PIDFILE**: environment variable that contains the PID file location..
