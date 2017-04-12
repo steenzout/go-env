@@ -16,7 +16,7 @@ type RedisTestSuite struct {
 func (s RedisTestSuite) SetupTest() {
 	os.Clearenv()
 	os.Setenv(env.EnvRedisDatabase, "db")
-	os.Setenv(env.EnvRedisHost, "db")
+	os.Setenv(env.EnvRedisHost, "localhost")
 	os.Setenv(env.EnvRedisPort, "6379")
 	os.Setenv(env.EnvRedisPassword, "secret")
 }
