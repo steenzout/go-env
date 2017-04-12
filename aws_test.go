@@ -27,7 +27,7 @@ func (s AWSTestSuite) TearDownTest() {
 
 // Test check behavior of GetAWS*() functions.
 func (s AWSTestSuite) TestGetAWS() {
-	s.Equal("db", env.GetAWSAccessKeyID())
-	s.Equal("localhost", env.GetAWSSecretAccessKey())
-	s.Equal("secret", env.GetAWSRegion())
+	s.Equal("ID", env.GetAWSAccessKeyID())
+	s.Equal("secret", env.GetAWSSecretAccessKey())
+	s.Equal("us-east-1", env.GetAWSRegion())
 }
