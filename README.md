@@ -20,8 +20,8 @@ Library that uses convention to read configuration paramaters from the environme
 ## cloud:AWS
 
 - **AWS_ACCESS_KEY_ID**: environment variable that contains the AWS access key ID.
-- **AWS_SECRET_ACCESS_KEY**: name of the environment variable that contains the AWS access key secret.
-- **AWS_REGION**: name of the environment variable that contains the AWS region.
+- **AWS_SECRET_ACCESS_KEY**: environment variable that contains the AWS access key secret.
+- **AWS_REGION**: environment variable that contains the AWS region.
 
 
 [license]:  https://raw.githubusercontent.com/steenzout/go-env/master/LICENSE   "Apache License 2.0"
