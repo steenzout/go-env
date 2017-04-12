@@ -34,7 +34,7 @@ func (s RedisTestSuite) TestGetRedis() {
 	s.Equal("secret", env.GetRedisPassword())
 }
 
-// Test check behavior of GetOptionalString().
-func (s ClearEnvSuite) TestDefaultGetRedisPort() {
+// TestGetRedis check default value behavior of GetRedis*().
+func (s ClearEnvSuite) TestGetRedis() {
 	s.Equal(6379, env.GetRedisPort())
 }
