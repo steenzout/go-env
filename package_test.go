@@ -32,6 +32,7 @@ func TestPackage(t *testing.T) {
 
 	// test app specific functions
 	suite.Run(t, new(RedisTestSuite))
+	suite.Run(t, new(ResqueTestSuite))
 
 	// test cloud specific functions
 	suite.Run(t, new(AWSTestSuite))
