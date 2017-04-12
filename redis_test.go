@@ -3,8 +3,9 @@ package env_test
 import (
 	"os"
 
-	"github.com/steenzout/go-env"
 	"github.com/stretchr/testify/suite"
+
+	"github.com/steenzout/go-env"
 )
 
 // RedisTestSuite test suite for functions in redis.go.
