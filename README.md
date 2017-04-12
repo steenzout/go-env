@@ -17,6 +17,11 @@ Library that uses convention to read configuration paramaters from the environme
 - **REDIS_HOST**: environment variable that contains the Redis host.
 
 
+## app:Resque
+
+- **RESQUE_QUEUE**: environment variable that contains the Resque queue.
+
+
 ## cloud:AWS
 
 - **AWS_ACCESS_KEY_ID**: environment variable that contains the AWS access key ID.
