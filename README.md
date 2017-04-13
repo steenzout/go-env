@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/steenzout/go-env/badge.svg?branch=master&service=github)](https://coveralls.io/github/steenzout/go-env?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/steenzout/go-env)](https://goreportcard.com/report/github.com/steenzout/go-env)
 
-Library that uses convention to read configuration paramaters from the environment.
+Library that uses convention to read configuration parameters from the environment.
 
 
 ## environment variables
