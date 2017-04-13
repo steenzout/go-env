@@ -1,7 +1,10 @@
 language: go
 cache:
   directories:
-    - ${GOPATH}/src/github.com/steenzout/go-env/vendor
+    - ${GOPATH}/src/github.com/${TRAVIS_REPO_SLUG}/vendor
+    - ${GOPATH}/src/github.com/h12w
+    - ${GOPATH}/src/github.com/Masterminds
+    - ${GOPATH}/src/github.com/mattn
 go: 1.6
 sudo: false
 
@@ -10,6 +13,7 @@ env:
 
 install:
   - go get -v github.com/h12w/gosweep
+  - go get -v github.com/mattn/goveralls
   - go get -v github.com/Masterminds/glide
   - glide install
 
