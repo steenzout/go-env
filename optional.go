@@ -56,11 +56,7 @@ func GetOptionalStringSlice(v string, delimiter string, d []string) []string {
 		return d
 	}
 
-	out := splitAndTrimSlice(value, delimiter)
-	if len(out) == 0 {
-		return d
-	}
-	return out
+	return splitAndTrimSlice(value, delimiter)
 }
 
 // splitAndTrimSlice returns a string slice by
