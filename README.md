@@ -3,6 +3,7 @@
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)][license]
 [![Build Status](https://travis-ci.org/steenzout/go-env.svg?branch=master)](https://travis-ci.org/steenzout/go-env/)
 [![Coverage Status](https://coveralls.io/repos/steenzout/go-env/badge.svg?branch=master&service=github)](https://coveralls.io/github/steenzout/go-env?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/steenzout/go-env)](https://goreportcard.com/report/github.com/steenzout/go-env)
 
 Library that uses convention to read configuration paramaters from the environment.
 
