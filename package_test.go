@@ -50,6 +50,8 @@ func TestPackage(t *testing.T) {
 	suite.Run(t, new(OptionalTestSuite))
 
 	// test app specific functions
+	suite.Run(t, new(MySQLTestSuite))
+	suite.Run(t, new(PostgreSQLTestSuite))
 	suite.Run(t, new(RedisTestSuite))
 	suite.Run(t, new(ResqueTestSuite))
 
