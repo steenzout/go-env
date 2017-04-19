@@ -10,6 +10,22 @@ Library that uses convention to read configuration parameters from the environme
 
 ## environment variables
 
+### app:MySQL
+
+- **MYSQL_DB**: environment variable that contains the MySQL database.
+- **MYSQL_HOST**: environment variable that contains the MySQL host.
+- **MYSQL_PASSWORD**: environment variable that contains the MySQL user's password.
+- **MYSQL_PORT**: environment variable that contains the MySQL port (default: `3306`).
+- **MYSQL_USER**: environment variable that contains the MySQL user.
+
+### app:PostgreSQL
+
+- **POSTGRESQL_DB**: environment variable that contains the PostgreSQL database.
+- **POSTGRESQL_HOST**: environment variable that contains the PostgreSQL host.
+- **POSTGRESQL_PASSWORD**: environment variable that contains the PostgreSQL user's password.
+- **POSTGRESQL_PORT**: environment variable that contains the PostgreSQL port (default: `5432`).
+- **POSTGRESQL_USER**: environment variable that contains the PostgreSQL user.
+
 ### app:Redis
 
 - **REDIS_DB**: environment variable that contains the Redis database.
