@@ -18,6 +18,10 @@ package env
 const (
 	// EnvAWSAccessKeyID name of the environment variable that contains the AWS access key ID.
 	EnvAWSAccessKeyID = "AWS_ACCESS_KEY_ID"
+	// EnvAWSBucket name of the bucket.
+	EnvAWSBucket = "AWS_BUCKET"
+	// EnvAWSPath path in the bucket.
+	EnvAWSPath = "AWS_PATH"
 	// EnvAWSSecretAccessKey name of the environment variable that contains the AWS access key secret.
 	EnvAWSSecretAccessKey = "AWS_SECRET_ACCESS_KEY"
 	// EnvAWSRegion name of the environment variable that contains the AWS region.
@@ -29,12 +33,22 @@ func GetAWSAccessKeyID() string {
 	return GetString(EnvAWSAccessKeyID)
 }
 
-// GetAWSSecretAccessKey returns the AWS access key secret.
-func GetAWSSecretAccessKey() string {
-	return GetString(EnvAWSSecretAccessKey)
+// GetAWSBucket returns the AWS bucket.
+func GetAWSBucket() string {
+	return GetString(EnvAWSBucket)
+}
+
+// GetAWSPath returns the AWS path.
+func GetAWSPath() string {
+	return GetString(EnvAWSPath)
 }
 
 // GetAWSRegion returns the AWS region.
 func GetAWSRegion() string {
 	return GetString(EnvAWSRegion)
+}
+
+// GetAWSSecretAccessKey returns the AWS access key secret.
+func GetAWSSecretAccessKey() string {
+	return GetString(EnvAWSSecretAccessKey)
 }

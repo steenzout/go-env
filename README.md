@@ -46,6 +46,8 @@ Library that uses convention to read configuration parameters from the environme
 ### cloud:AWS
 
 - **AWS_ACCESS_KEY_ID**: environment variable that contains the AWS access key ID.
+- **AWS_BUCKET**: name of the bucket.
+- **AWS_PATH**: path in the bucket.
 - **AWS_REGION**: environment variable that contains the AWS region.
 - **AWS_SECRET_ACCESS_KEY**: environment variable that contains the AWS access key secret.
 
