@@ -31,6 +31,8 @@ type AWSTestSuite struct {
 func (s AWSTestSuite) SetupTest() {
 	os.Clearenv()
 	os.Setenv(env.EnvAWSAccessKeyID, "ID")
+	os.Setenv(env.EnvAWSBucket, "test.example.com")
+	os.Setenv(env.EnvAWSPath, "/backup/database")
 	os.Setenv(env.EnvAWSSecretAccessKey, "secret")
 	os.Setenv(env.EnvAWSRegion, "us-east-1")
 }
@@ -43,6 +45,8 @@ func (s AWSTestSuite) TearDownTest() {
 // Test check behavior of GetAWS*() functions.
 func (s AWSTestSuite) TestGetAWS() {
 	s.Equal("ID", env.GetAWSAccessKeyID())
+	s.Equal("test.example.com", env.GetAWSBucket())
+	s.Equal("/backup/database", env.GetAWSPath())
 	s.Equal("secret", env.GetAWSSecretAccessKey())
 	s.Equal("us-east-1", env.GetAWSRegion())
 }
