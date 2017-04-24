@@ -1,3 +1,5 @@
+package env
+
 //
 // Copyright 2017 Pedro Salgado
 //
@@ -13,7 +15,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-package env
 
 const (
 	// EnvMySQLDatabase name of the environment variable that contains the MySQL database.
