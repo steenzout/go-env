@@ -48,9 +48,8 @@ func GetResqueCount() int {
 }
 
 // GetResqueInterval returns the Resque polling frequency.
-func GetResqueInterval() *time.Duration {
-	d := ResqueInterval
-	return GetOptionalDuration(EnvResqueInterval, &d)
+func GetResqueInterval() time.Duration {
+	return GetOptionalDuration(EnvResqueInterval, ResqueInterval)
 }
 
 // GetResquePIDFile returns the Resque PID file location.

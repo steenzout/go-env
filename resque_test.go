@@ -49,7 +49,7 @@ func (s ResqueTestSuite) TearDownTest() {
 func (s ResqueTestSuite) TestGetResque() {
 	s.Equal("file_serve", env.GetResqueQueue())
 	s.Equal(5, env.GetResqueCount())
-	s.Equal(3*time.Second, *env.GetResqueInterval())
+	s.Equal(3*time.Second, env.GetResqueInterval())
 	s.Equal("/var/run/resque.workerA.pid", env.GetResquePIDFile())
 	s.Equal([]string{"queue_A", "queue_B"}, env.GetResqueQueues())
 }
@@ -57,6 +57,6 @@ func (s ResqueTestSuite) TestGetResque() {
 // TestGetResque check default value behavior of GetResque*().
 func (s ClearEnvSuite) TestGetResque() {
 	s.Equal(env.ResqueCount, env.GetResqueCount())
-	s.Equal(env.ResqueInterval, *env.GetResqueInterval())
+	s.Equal(env.ResqueInterval, env.GetResqueInterval())
 	s.Equal([]string{"*"}, env.GetResqueQueues())
 }

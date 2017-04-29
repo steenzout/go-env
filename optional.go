@@ -25,7 +25,7 @@ import (
 
 // GetOptionalDuration returns the time.Duration value of the environment variable if it exists and has a valid format;
 // otherwise it will return the given default value.
-func GetOptionalDuration(v string, d *time.Duration) *time.Duration {
+func GetOptionalDuration(v string, d time.Duration) time.Duration {
 	value, found := os.LookupEnv(v)
 	if !found {
 		return d
@@ -35,7 +35,7 @@ func GetOptionalDuration(v string, d *time.Duration) *time.Duration {
 	if err != nil {
 		return d
 	}
-	return &dvalue
+	return dvalue
 }
 
 // GetOptionalInt returns the string value of the environment variable if it exists and is an integer;

@@ -31,10 +31,10 @@ type OptionalTestSuite struct {
 func (s OptionalTestSuite) TestGetOptionalDuration() {
 	d := 10 * time.Second
 
-	s.Equal(d, *env.GetOptionalDuration(EnvUnknown, &d))
-	s.Equal(d, *env.GetOptionalDuration(EnvStr, &d))
-	s.Equal(d, *env.GetOptionalDuration(EnvInt, &d))
-	s.Equal(1*time.Second, *env.GetOptionalDuration(EnvDuration, &d))
+	s.Equal(d, env.GetOptionalDuration(EnvUnknown, d))
+	s.Equal(d, env.GetOptionalDuration(EnvStr, d))
+	s.Equal(d, env.GetOptionalDuration(EnvInt, d))
+	s.Equal(1*time.Second, env.GetOptionalDuration(EnvDuration, d))
 }
 
 // TestGetOptionalInt check behavior of GetOptionalInt().
