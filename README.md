@@ -5,6 +5,8 @@
 [![Coverage Status](https://coveralls.io/repos/steenzout/go-env/badge.svg?branch=master&service=github)](https://coveralls.io/github/steenzout/go-env?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/steenzout/go-env)](https://goreportcard.com/report/github.com/steenzout/go-env)
 
+[![Project](https://www.openhub.net/p/go-steenzout-env/widgets/project_thin_badge.gif)][project]
+
 Library that uses convention to read configuration parameters from the environment.
 
 
@@ -53,3 +55,4 @@ Library that uses convention to read configuration parameters from the environme
 
 
 [license]:  https://raw.githubusercontent.com/steenzout/go-env/master/LICENSE   "Apache License 2.0"
+[project]:  https://www.openhub.net/p/go-steenzout-env/    "OpenHub project page"
