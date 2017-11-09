@@ -18,15 +18,15 @@ package env
 
 const (
 	// EnvPostgreSQLDatabase name of the environment variable that contains the PostgreSQL database.
-	EnvPostgreSQLDatabase = "POSTGRESQL_DB"
+	EnvPostgreSQLDatabase = "POSTGRES_DB"
 	// EnvPostgreSQLHost name of the environment variable that contains the PostgreSQL host.
-	EnvPostgreSQLHost = "POSTGRESQL_HOST"
+	EnvPostgreSQLHost = "POSTGRES_HOST"
 	// EnvPostgreSQLPassword name of the environment variable that contains the PostgreSQL user's password.
-	EnvPostgreSQLPassword = "POSTGRESQL_PASSWORD"
+	EnvPostgreSQLPassword = "POSTGRES_PASSWORD"
 	// EnvPostgreSQLPort name of the environment variable that contains the PostgreSQL port.
-	EnvPostgreSQLPort = "POSTGRESQL_PORT"
+	EnvPostgreSQLPort = "POSTGRES_PORT"
 	// EnvPostgreSQLUser name of the environment variable that contains the PostgreSQL user.
-	EnvPostgreSQLUser = "POSTGRESQL_USER"
+	EnvPostgreSQLUser = "POSTGRES_USER"
 )
 
 // GetPostgreSQLDatabase returns the PostgreSQL database.
