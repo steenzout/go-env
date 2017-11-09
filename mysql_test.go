@@ -36,6 +36,7 @@ func (s MySQLTestSuite) SetupTest() {
 	os.Setenv(env.EnvMySQLHost, "localhost")
 	os.Setenv(env.EnvMySQLPort, "3306")
 	os.Setenv(env.EnvMySQLPassword, "secret")
+	os.Setenv(env.EnvMySQLRootPassword, "bigsecret")
 	os.Setenv(env.EnvMySQLUser, "user")
 }
 
@@ -50,6 +51,7 @@ func (s MySQLTestSuite) TestGetMySQL() {
 	s.Equal("localhost", env.GetMySQLHost())
 	s.Equal("secret", env.GetMySQLPassword())
 	s.Equal(3306, env.GetMySQLPort())
+	s.Equal("bigsecret", env.GetMySQLRootPassword())
 	s.Equal("user", env.GetMySQLUser())
 }
 
