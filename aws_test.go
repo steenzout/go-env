@@ -35,7 +35,9 @@ func (s AWSTestSuite) SetupTest() {
 	os.Setenv(env.EnvAWSBucket, "test.example.com")
 	os.Setenv(env.EnvAWSCABundle, "/path/to_bundle")
 	os.Setenv(env.EnvAWSConfigFile, "/path/to_file.cfg")
+	os.Setenv(env.EnvAWSOutput, "table")
 	os.Setenv(env.EnvAWSPath, "/backup/database")
+	os.Setenv(env.EnvAWSProfile, "profile")
 	os.Setenv(env.EnvAWSSecretAccessKey, "secret")
 	os.Setenv(env.EnvAWSRegion, "us-east-1")
 	os.Setenv(env.EnvAWSSessionToken, "token")
@@ -54,10 +56,16 @@ func (s AWSTestSuite) TestGetAWS() {
 	s.Equal("/path/to_bundle", env.GetAWSCABundle())
 	s.Equal("/path/to_file.cfg", env.GetAWSConfigFile())
 	s.Equal("/backup/database", env.GetAWSPath())
-	s.Equal("json", env.GetAWSOutput())
-	s.Equal("default", env.GetAWSProfile())
+	s.Equal("table", env.GetAWSOutput())
+	s.Equal("profile", env.GetAWSProfile())
 	s.Equal("secret", env.GetAWSSecretAccessKey())
 	s.Equal("us-east-1", env.GetAWSRegion())
 	s.Equal("token", env.GetAWSSessionToken())
 	s.Equal("/path/to_file", env.GetAWSSharedCredentialsFile())
+}
+
+// TestGetMySQL check default value behavior of GetAWS*().
+func (s ClearEnvSuite) TestGetAWS() {
+	s.Equal("json", env.GetAWSOutput())
+	s.Equal("default", env.GetAWSProfile())
 }
