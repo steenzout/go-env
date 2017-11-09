@@ -3,6 +3,8 @@ cache:
   directories:
     - ${GOPATH}/src/github.com/${TRAVIS_REPO_SLUG}/vendor
     - ${GOPATH}/src/github.com/fzipp
+    - ${GOPATH}/src/github.com/golang
+    - ${GOPATH}/src/github.com/gordonklaus
     - ${GOPATH}/src/github.com/h12w
     - ${GOPATH}/src/github.com/mattn
     - ${GOPATH}/src/golang/dep
@@ -20,6 +22,7 @@ install:
   - go get -v -u github.com/fzipp/gocyclo
   - go get -v -u github.com/h12w/gosweep
   - go get -v -u github.com/mattn/goveralls
+  - go get -v -u golang.org/x/tools/cmd/goimports
   - go get -v -u github.com/golang/dep/cmd/dep
   - dep ensure
 
