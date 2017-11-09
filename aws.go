@@ -21,23 +21,23 @@ const (
 	EnvAWSAccessKeyID = "AWS_ACCESS_KEY_ID"
 	// EnvAWSBucket name of the bucket.
 	EnvAWSBucket = "AWS_BUCKET"
-	// EnvAWSCABundle
+	// EnvAWSCABundle name of the environment variable that contains the path to the certificate bundle.
 	EnvAWSCABundle = "AWS_CA_BUNDLE"
-	// EnvAWSConfigFile
+	// EnvAWSConfigFile name of the environment variable that contains the path to the file where configuration profiles are stored.
 	EnvAWSConfigFile = "AWS_CONFIG_FILE"
-	// EnvAWSOutput
+	// EnvAWSOutput name of the environment variable that contains the output format.
 	EnvAWSOutput = "AWS_DEFAULT_OUTPUT"
 	// EnvAWSPath path in the bucket.
 	EnvAWSPath = "AWS_PATH"
-	// EnvAWSProfile
+	// EnvAWSProfile name of the environment variable that contains the name of the profile.
 	EnvAWSProfile = "AWS_PROFILE"
 	// EnvAWSRegion name of the environment variable that contains the AWS region.
 	EnvAWSRegion = "AWS_DEFAULT_REGION"
-	// EnvAWSSharedCredentialsFile
+	// EnvAWSSharedCredentialsFile name of the environment variable that contains the path to the file where access keys are stored.
 	EnvAWSSharedCredentialsFile = "AWS_SHARED_CREDENTIALS_FILE"
 	// EnvAWSSecretAccessKey name of the environment variable that contains the AWS access key secret.
 	EnvAWSSecretAccessKey = "AWS_SECRET_ACCESS_KEY"
-	// EnvAWSSessionToken
+	// EnvAWSSessionToken name of the environment variable that contains the AWS temporary session token.
 	EnvAWSSessionToken = "AWS_SESSION_TOKEN"
 )
 
