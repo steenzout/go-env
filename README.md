@@ -20,13 +20,17 @@ Library that uses convention to read configuration parameters from the environme
 - **MYSQL_PORT**: port (default: `3306`).
 - **MYSQL_USER**: user name.
 
+
+- [hub.docker.com/_/mysql](https://hub.docker.com/_/mysql/)
+
+
 ### app:PostgreSQL
 
-- **POSTGRESQL_DB**: name of the database.
-- **POSTGRESQL_HOST**: host.
-- **POSTGRESQL_PASSWORD**: password.
-- **POSTGRESQL_PORT**: port (default: `5432`).
-- **POSTGRESQL_USER**: user name.
+- **POSTGRES_DB**: name of the database.
+- **POSTGRES_HOST**: host.
+- **POSTGRES_PASSWORD**: password.
+- **POSTGRES_PORT**: port (default: `5432`).
+- **POSTGRES_USER**: user name.
 
 ### app:Redis
 
@@ -58,6 +62,7 @@ Library that uses convention to read configuration parameters from the environme
 - **AWS_SECRET_ACCESS_KEY**: the AWS access key secret.
 - **AWS_SESSION_TOKEN**: temporary session token.
 - **AWS_SHARED_CREDENTIALS_FILE**: path to the file where access keys are stored.
+
 
 - [AWS Documentation » AWS Command Line Interface » User Guide » Configuring the AWS CLI » Environment Variables](http://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html)
 
