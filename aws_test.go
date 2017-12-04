@@ -68,4 +68,5 @@ func (s AWSTestSuite) TestGetAWS() {
 func (s ClearEnvSuite) TestGetAWS() {
 	s.Equal("json", env.GetAWSOutput())
 	s.Equal("default", env.GetAWSProfile())
+	s.Equal("", env.GetAWSSessionToken())
 }
