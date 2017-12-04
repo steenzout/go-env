@@ -60,7 +60,7 @@ Library that uses convention to read configuration parameters from the environme
 - **AWS_DEFAULT_OUTPUT**: output format (default: `json`).
 - **AWS_PROFILE**: name of the profile (default: `default`).
 - **AWS_SECRET_ACCESS_KEY**: the AWS access key secret.
-- **AWS_SESSION_TOKEN**: temporary session token.
+- **AWS_SESSION_TOKEN**: temporary session token (default: ``).
 - **AWS_SHARED_CREDENTIALS_FILE**: path to the file where access keys are stored.
 
 
