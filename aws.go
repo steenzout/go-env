@@ -88,7 +88,7 @@ func GetAWSSecretAccessKey() string {
 
 // GetAWSSessionToken temporary session token.
 func GetAWSSessionToken() string {
-	return GetString(EnvAWSSessionToken)
+	return GetOptionalString(EnvAWSSessionToken, "")
 }
 
 // GetAWSSharedCredentialsFile returns path to the file where access keys are stored.
