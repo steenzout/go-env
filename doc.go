@@ -1,6 +1,6 @@
 // Package env uses a convention to read configuration parameters from the environment.
 //
-// Copyright 2017 Pedro Salgado
+// Copyright 2017-2018 Pedro Salgado
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
