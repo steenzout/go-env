@@ -25,6 +25,8 @@ const (
 	EnvMySQLPassword = "MYSQL_PASSWORD"
 	// EnvMySQLPort name of the environment variable that contains the MySQL port.
 	EnvMySQLPort = "MYSQL_PORT"
+	// EnvMySQLProtocol name of the environment variable that contains the protocol to be used when connecting to MySQL.
+	EnvMySQLProtocol = "MYSQL_PROTOCOL"
 	// EnvMySQLRootPassword name of the environment variable that contains the MySQL root's password.
 	EnvMySQLRootPassword = "MYSQL_ROOT_PASSWORD"
 	// EnvMySQLUser name of the environment variable that contains the MySQL user.
@@ -44,6 +46,11 @@ func GetMySQLHost() string {
 // GetMySQLPassword returns the MySQL user password.
 func GetMySQLPassword() string {
 	return GetOptionalString(EnvMySQLPassword, "")
+}
+
+// GetMySQLProtocol returns the protocol to use when connecting to MySQL (default: tcp).
+func GetMySQLProtocol() string {
+	return GetOptionalString(EnvMySQLProtocol, "tcp")
 }
 
 // GetMySQLPort returns the MySQL port.
