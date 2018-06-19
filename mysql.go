@@ -43,7 +43,7 @@ func GetMySQLHost() string {
 
 // GetMySQLPassword returns the MySQL user password.
 func GetMySQLPassword() string {
-	return GetString(EnvMySQLPassword)
+	return GetOptionalString(EnvMySQLPassword, "")
 }
 
 // GetMySQLPort returns the MySQL port.
