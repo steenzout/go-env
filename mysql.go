@@ -58,5 +58,5 @@ func GetMySQLUser() string {
 
 // GetMySQLRootPassword returns the MySQL root password.
 func GetMySQLRootPassword() string {
-	return GetString(EnvMySQLRootPassword)
+	return GetOptionalString(EnvMySQLRootPassword, "")
 }
