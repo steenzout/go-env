@@ -15,8 +15,10 @@ Library that uses convention to read configuration parameters from the environme
 
 - **MYSQL_DB**: name of the MySQL database.
 - **MYSQL_HOST**: host.
-- **MYSQL_PASSWORD**: password.
+- **MYSQL_PASSWORD**: password (default: `''`)
 - **MYSQL_PORT**: port (default: `3306`).
+- **MYSQL_PROTOCOL**: protocol to establish connection (default: `tcp`)
+- **MYSQL_ROOT_PASSWORD**: root password (default: `''`)
 - **MYSQL_USER**: user name.
 
 - [github.com/go-sql-driver/mysql](https://github.com/go-sql-driver/mysql)
