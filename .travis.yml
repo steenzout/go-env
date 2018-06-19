@@ -13,6 +13,8 @@ go:
   - 1.9
   - 1.8
 sudo: false
+services:
+  - mysql
 
 env:
     CI_SERVICE=travis-ci

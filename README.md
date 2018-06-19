@@ -9,7 +9,6 @@
 
 Library that uses convention to read configuration parameters from the environment.
 
-
 ## environment variables
 
 ### app:MySQL
@@ -20,9 +19,8 @@ Library that uses convention to read configuration parameters from the environme
 - **MYSQL_PORT**: port (default: `3306`).
 - **MYSQL_USER**: user name.
 
-
+- [github.com/go-sql-driver/mysql](https://github.com/go-sql-driver/mysql)
 - [hub.docker.com/_/mysql](https://hub.docker.com/_/mysql/)
-
 
 ### app:PostgreSQL
 
@@ -39,7 +37,6 @@ Library that uses convention to read configuration parameters from the environme
 - **REDIS_PORT**: port (default: `6379`).
 - **REDIS_HOST**: host.
 
-
 ### app:Resque
 
 - **RESQUE_COUNT**: number of Resque workers to be spawned (default: `1`).
@@ -47,7 +44,6 @@ Library that uses convention to read configuration parameters from the environme
 - **RESQUE_PIDFILE**: PID file location..
 - **RESQUE_QUEUE**: name of a single Resque queue.
 - **RESQUE_QUEUES**: list of Resque queue names (default: `*`).
-
 
 ### cloud:AWS
 
@@ -63,9 +59,7 @@ Library that uses convention to read configuration parameters from the environme
 - **AWS_SESSION_TOKEN**: temporary session token (default: ``).
 - **AWS_SHARED_CREDENTIALS_FILE**: path to the file where access keys are stored.
 
-
 - [AWS Documentation » AWS Command Line Interface » User Guide » Configuring the AWS CLI » Environment Variables](http://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html)
-
 
 [license]:  https://raw.githubusercontent.com/steenzout/go-env/master/LICENSE   "Apache License 2.0"
 [project]:  https://www.openhub.net/p/go-steenzout-env/    "OpenHub project page"

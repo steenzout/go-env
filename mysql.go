@@ -1,5 +1,10 @@
 package env
 
+import (
+	"database/sql"
+	"fmt"
+)
+
 //
 // Copyright 2017-2018 Pedro Salgado
 //
@@ -32,6 +37,31 @@ const (
 	// EnvMySQLUser name of the environment variable that contains the MySQL user.
 	EnvMySQLUser = "MYSQL_USER"
 )
+
+// GetMySQLConnection attempts to setup the database connection based on the environment.
+func GetMySQLConnection() (*sql.DB, error) {
+	// [username[:password]@][protocol[(address)]]/dbname[?param1=value1&...&paramN=valueN]
+	db, err := sql.Open(
+		"mysql",
+		fmt.Sprintf(
+			"%s:%s@%s(%s)/%s",
+			GetMySQLUser(),
+			GetMySQLPassword(),
+			GetMySQLProtocol(),
+			GetMySQLHost(),
+			GetMySQLDatabase(),
+		))
+	if err != nil {
+		return nil, err
+	}
+
+	err = db.Ping()
+	if err != nil {
+		return nil, err
+	}
+
+	return db, nil
+}
 
 // GetMySQLDatabase returns the MySQL database.
 func GetMySQLDatabase() string {
