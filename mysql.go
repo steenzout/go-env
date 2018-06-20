@@ -48,7 +48,7 @@ func GetMySQLConnection() (*sql.DB, error) {
 			GetMySQLUser(),
 			GetMySQLPassword(),
 			GetMySQLProtocol(),
-			GetMySQLHost(),
+			GetMySQLAddress(),
 			GetMySQLDatabase(),
 		))
 	if err != nil {
@@ -61,6 +61,20 @@ func GetMySQLConnection() (*sql.DB, error) {
 	}
 
 	return db, nil
+}
+
+// GetMySQLAddress returns the MySQL network address or path to the unix domain socket.
+func GetMySQLAddress() string {
+	p := GetMySQLProtocol()
+	if "unix" == p {
+		return GetMySQLHost()
+	}
+
+	return fmt.Sprintf(
+		"%s:%d",
+		GetMySQLHost(),
+		GetMySQLPort(),
+	)
 }
 
 // GetMySQLDatabase returns the MySQL database.
