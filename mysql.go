@@ -23,7 +23,7 @@ import (
 
 const (
 	// EnvMySQLDatabase name of the environment variable that contains the MySQL database.
-	EnvMySQLDatabase = "MYSQL_DB"
+	EnvMySQLDatabase = "MYSQL_DATABASE"
 	// EnvMySQLHost name of the environment variable that contains the MySQL host.
 	EnvMySQLHost = "MYSQL_HOST"
 	// EnvMySQLPassword name of the environment variable that contains the MySQL user's password.
