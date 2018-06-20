@@ -23,7 +23,7 @@ import (
 
 const (
 	// EnvMySQLDatabase name of the environment variable that contains the MySQL database.
-	EnvMySQLDatabase = "MYSQL_DB"
+	EnvMySQLDatabase = "MYSQL_DATABASE"
 	// EnvMySQLHost name of the environment variable that contains the MySQL host.
 	EnvMySQLHost = "MYSQL_HOST"
 	// EnvMySQLPassword name of the environment variable that contains the MySQL user's password.
@@ -48,7 +48,7 @@ func GetMySQLConnection() (*sql.DB, error) {
 			GetMySQLUser(),
 			GetMySQLPassword(),
 			GetMySQLProtocol(),
-			GetMySQLHost(),
+			GetMySQLAddress(),
 			GetMySQLDatabase(),
 		))
 	if err != nil {
@@ -61,6 +61,20 @@ func GetMySQLConnection() (*sql.DB, error) {
 	}
 
 	return db, nil
+}
+
+// GetMySQLAddress returns the MySQL network address or path to the unix domain socket.
+func GetMySQLAddress() string {
+	p := GetMySQLProtocol()
+	if "unix" == p {
+		return GetMySQLHost()
+	}
+
+	return fmt.Sprintf(
+		"%s:%d",
+		GetMySQLHost(),
+		GetMySQLPort(),
+	)
 }
 
 // GetMySQLDatabase returns the MySQL database.

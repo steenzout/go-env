@@ -13,8 +13,8 @@ Library that uses convention to read configuration parameters from the environme
 
 ### app:MySQL
 
-- **MYSQL_DB**: name of the MySQL database.
-- **MYSQL_HOST**: host (default: `/var/run/mysqld/mysqld.sock`)
+- **MYSQL_DATABASE**: name of the MySQL database.
+- **MYSQL_HOST**: host or path to Unix domain socket (default: `/var/run/mysqld/mysqld.sock`)
 - **MYSQL_PASSWORD**: password (default: `''`)
 - **MYSQL_PORT**: port (default: `3306`).
 - **MYSQL_PROTOCOL**: protocol to establish connection (default: `unix`)

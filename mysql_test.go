@@ -36,7 +36,7 @@ func (s MySQLTestSuite) TearDownTest() {
 	os.Clearenv()
 }
 
-// Test check behavior of GetMySQL*() functions.
+// TestGetMySQL check behavior of GetMySQL*() functions.
 func (s MySQLTestSuite) TestGetMySQL() {
 	setUp := func() {
 		os.Setenv(env.EnvMySQLDatabase, "test")
@@ -49,6 +49,7 @@ func (s MySQLTestSuite) TestGetMySQL() {
 	}
 	setUp()
 
+	s.Equal("example.com:3306", env.GetMySQLAddress())
 	s.Equal("test", env.GetMySQLDatabase())
 	s.Equal("example.com", env.GetMySQLHost())
 	s.Equal("secret1", env.GetMySQLPassword())
@@ -57,15 +58,26 @@ func (s MySQLTestSuite) TestGetMySQL() {
 	s.Equal("travis", env.GetMySQLUser())
 }
 
+// TestGetMySQLAddressWithUnixDomainSocket check behavior of GetMySQLAddress() function when using Unix domain socket.
+func (s MySQLTestSuite) TestGetMySQLAddressWithUnixDomainSocket() {
+	setUp := func() {
+		os.Setenv(env.EnvMySQLHost, "/tmp/mysql.sock")
+		os.Setenv(env.EnvMySQLProtocol, "unix")
+	}
+	setUp()
+
+	s.Equal("/tmp/mysql.sock", env.GetMySQLAddress())
+}
+
 // TestGetMySQLConnection check behavior of GetMySQLConnection().
 func (s MySQLTestSuite) TestGetMySQLConnection() {
 	setUp := func() {
+		// set these just like defined in docker.env
 		os.Setenv(env.EnvMySQLDatabase, "mysql")
 		os.Setenv(env.EnvMySQLHost, "127.0.0.1")
 		os.Setenv(env.EnvMySQLPort, "3306")
 		os.Setenv(env.EnvMySQLProtocol, "tcp")
 		os.Setenv(env.EnvMySQLPassword, "")
-		os.Setenv(env.EnvMySQLRootPassword, "")
 		os.Setenv(env.EnvMySQLUser, "root")
 	}
 	setUp()
