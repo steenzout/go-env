@@ -70,7 +70,7 @@ func GetMySQLDatabase() string {
 
 // GetMySQLHost returns the MySQL host.
 func GetMySQLHost() string {
-	return GetString(EnvMySQLHost)
+	return GetOptionalString(EnvMySQLHost, "/var/run/mysqld/mysqld.sock")
 }
 
 // GetMySQLPassword returns the MySQL user password.
@@ -80,7 +80,7 @@ func GetMySQLPassword() string {
 
 // GetMySQLProtocol returns the protocol to use when connecting to MySQL (default: tcp).
 func GetMySQLProtocol() string {
-	return GetOptionalString(EnvMySQLProtocol, "tcp")
+	return GetOptionalString(EnvMySQLProtocol, "unix")
 }
 
 // GetMySQLPort returns the MySQL port.

@@ -94,8 +94,9 @@ func (s MySQLTestSuite) TestWrongCredentials() {
 
 // TestGetMySQL check default value behavior of GetMySQL*().
 func (s ClearEnvSuite) TestGetMySQL() {
+	s.Equal("/var/run/mysqld/mysqld.sock", env.GetMySQLHost())
 	s.Equal("", env.GetMySQLPassword())
 	s.Equal(3306, env.GetMySQLPort())
-	s.Equal("tcp", env.GetMySQLProtocol())
+	s.Equal("unix", env.GetMySQLProtocol())
 	s.Equal("", env.GetMySQLRootPassword())
 }
