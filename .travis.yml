@@ -10,9 +10,12 @@ cache:
     - ${GOPATH}/src/golang.org/x
 go:
   - tip
+  - 1.10.x
   - 1.9
   - 1.8
 sudo: false
+services:
+  - mysql
 
 env:
     CI_SERVICE=travis-ci

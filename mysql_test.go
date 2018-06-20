@@ -1,7 +1,7 @@
 package env_test
 
 //
-// Copyright 2017 Pedro Salgado
+// Copyright 2017-2018 Pedro Salgado
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@ package env_test
 import (
 	"os"
 
+	_ "github.com/go-sql-driver/mysql"
+
 	"github.com/stretchr/testify/suite"
 
 	"github.com/steenzout/go-env"
@@ -29,17 +31,6 @@ type MySQLTestSuite struct {
 	suite.Suite
 }
 
-// SetupTest sets test environment variables.
-func (s MySQLTestSuite) SetupTest() {
-	os.Clearenv()
-	os.Setenv(env.EnvMySQLDatabase, "db")
-	os.Setenv(env.EnvMySQLHost, "localhost")
-	os.Setenv(env.EnvMySQLPort, "3306")
-	os.Setenv(env.EnvMySQLPassword, "secret")
-	os.Setenv(env.EnvMySQLRootPassword, "bigsecret")
-	os.Setenv(env.EnvMySQLUser, "user")
-}
-
 // TearDownTest clears all environment variables.
 func (s MySQLTestSuite) TearDownTest() {
 	os.Clearenv()
@@ -47,15 +38,65 @@ func (s MySQLTestSuite) TearDownTest() {
 
 // Test check behavior of GetMySQL*() functions.
 func (s MySQLTestSuite) TestGetMySQL() {
-	s.Equal("db", env.GetMySQLDatabase())
-	s.Equal("localhost", env.GetMySQLHost())
-	s.Equal("secret", env.GetMySQLPassword())
+	setUp := func() {
+		os.Setenv(env.EnvMySQLDatabase, "test")
+		os.Setenv(env.EnvMySQLHost, "example.com")
+		os.Setenv(env.EnvMySQLPort, "3306")
+		os.Setenv(env.EnvMySQLProtocol, "tcp")
+		os.Setenv(env.EnvMySQLPassword, "secret1")
+		os.Setenv(env.EnvMySQLRootPassword, "secret2")
+		os.Setenv(env.EnvMySQLUser, "travis")
+	}
+	setUp()
+
+	s.Equal("test", env.GetMySQLDatabase())
+	s.Equal("example.com", env.GetMySQLHost())
+	s.Equal("secret1", env.GetMySQLPassword())
 	s.Equal(3306, env.GetMySQLPort())
-	s.Equal("bigsecret", env.GetMySQLRootPassword())
-	s.Equal("user", env.GetMySQLUser())
+	s.Equal("secret2", env.GetMySQLRootPassword())
+	s.Equal("travis", env.GetMySQLUser())
+}
+
+// TestGetMySQLConnection check behavior of GetMySQLConnection().
+func (s MySQLTestSuite) TestGetMySQLConnection() {
+	setUp := func() {
+		os.Setenv(env.EnvMySQLDatabase, "mysql")
+		os.Setenv(env.EnvMySQLHost, "127.0.0.1")
+		os.Setenv(env.EnvMySQLPort, "3306")
+		os.Setenv(env.EnvMySQLProtocol, "tcp")
+		os.Setenv(env.EnvMySQLPassword, "")
+		os.Setenv(env.EnvMySQLRootPassword, "")
+		os.Setenv(env.EnvMySQLUser, "root")
+	}
+	setUp()
+
+	db, err := env.GetMySQLConnection()
+	if s.Nil(err) && s.NotNil(db) {
+		s.Nil(db.Ping())
+	}
+}
+
+// TestWrongCredentials check behavior when wrong credentials are passed to GetMySQLConnection().
+func (s MySQLTestSuite) TestWrongCredentials() {
+	os.Setenv(env.EnvMySQLDatabase, "mysql")
+	os.Setenv(env.EnvMySQLHost, "127.0.0.1")
+	os.Setenv(env.EnvMySQLPort, "3306")
+	os.Setenv(env.EnvMySQLProtocol, "tcp")
+	os.Setenv(env.EnvMySQLPassword, "bad")
+	os.Setenv(env.EnvMySQLRootPassword, "bad")
+	os.Setenv(env.EnvMySQLUser, "root")
+
+	db, err := env.GetMySQLConnection()
+	if s.NotNil(err) {
+		s.Nil(db)
+	}
 }
 
 // TestGetMySQL check default value behavior of GetMySQL*().
 func (s ClearEnvSuite) TestGetMySQL() {
+	s.Equal("/var/run/mysqld/mysqld.sock", env.GetMySQLHost())
+	s.Equal("", env.GetMySQLPassword())
 	s.Equal(3306, env.GetMySQLPort())
+	s.Equal("unix", env.GetMySQLProtocol())
+	s.Equal("", env.GetMySQLRootPassword())
 }

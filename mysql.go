@@ -1,7 +1,12 @@
 package env
 
+import (
+	"database/sql"
+	"fmt"
+)
+
 //
-// Copyright 2017 Pedro Salgado
+// Copyright 2017-2018 Pedro Salgado
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,11 +30,38 @@ const (
 	EnvMySQLPassword = "MYSQL_PASSWORD"
 	// EnvMySQLPort name of the environment variable that contains the MySQL port.
 	EnvMySQLPort = "MYSQL_PORT"
+	// EnvMySQLProtocol name of the environment variable that contains the protocol to be used when connecting to MySQL.
+	EnvMySQLProtocol = "MYSQL_PROTOCOL"
 	// EnvMySQLRootPassword name of the environment variable that contains the MySQL root's password.
 	EnvMySQLRootPassword = "MYSQL_ROOT_PASSWORD"
 	// EnvMySQLUser name of the environment variable that contains the MySQL user.
 	EnvMySQLUser = "MYSQL_USER"
 )
+
+// GetMySQLConnection attempts to setup the database connection based on the environment.
+func GetMySQLConnection() (*sql.DB, error) {
+	// [username[:password]@][protocol[(address)]]/dbname[?param1=value1&...&paramN=valueN]
+	db, err := sql.Open(
+		"mysql",
+		fmt.Sprintf(
+			"%s:%s@%s(%s)/%s",
+			GetMySQLUser(),
+			GetMySQLPassword(),
+			GetMySQLProtocol(),
+			GetMySQLHost(),
+			GetMySQLDatabase(),
+		))
+	if err != nil {
+		return nil, err
+	}
+
+	err = db.Ping()
+	if err != nil {
+		return nil, err
+	}
+
+	return db, nil
+}
 
 // GetMySQLDatabase returns the MySQL database.
 func GetMySQLDatabase() string {
@@ -38,12 +70,17 @@ func GetMySQLDatabase() string {
 
 // GetMySQLHost returns the MySQL host.
 func GetMySQLHost() string {
-	return GetString(EnvMySQLHost)
+	return GetOptionalString(EnvMySQLHost, "/var/run/mysqld/mysqld.sock")
 }
 
 // GetMySQLPassword returns the MySQL user password.
 func GetMySQLPassword() string {
-	return GetString(EnvMySQLPassword)
+	return GetOptionalString(EnvMySQLPassword, "")
+}
+
+// GetMySQLProtocol returns the protocol to use when connecting to MySQL (default: tcp).
+func GetMySQLProtocol() string {
+	return GetOptionalString(EnvMySQLProtocol, "unix")
 }
 
 // GetMySQLPort returns the MySQL port.
@@ -58,5 +95,5 @@ func GetMySQLUser() string {
 
 // GetMySQLRootPassword returns the MySQL root password.
 func GetMySQLRootPassword() string {
-	return GetString(EnvMySQLRootPassword)
+	return GetOptionalString(EnvMySQLRootPassword, "")
 }
