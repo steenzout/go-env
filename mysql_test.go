@@ -104,8 +104,8 @@ func (s MySQLTestSuite) TestWrongCredentials() {
 	}
 }
 
-// TestGetMySQL check default value behavior of GetMySQL*().
-func (s ClearEnvSuite) TestGetMySQL() {
+// TestGetMySQLDefaultValues check default value behavior of GetMySQL*().
+func (s ClearEnvSuite) TestGetMySQLDefaultValues() {
 	s.Equal("/var/run/mysqld/mysqld.sock", env.GetMySQLHost())
 	s.Equal("", env.GetMySQLPassword())
 	s.Equal(3306, env.GetMySQLPort())
