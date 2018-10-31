@@ -26,7 +26,7 @@ import (
 	"github.com/steenzout/go-env"
 )
 
-// MySQLTestSuite test suite for functions in postgresql.go.
+// MySQLTestSuite test suite for functions in mysql.go.
 type MySQLTestSuite struct {
 	suite.Suite
 }
