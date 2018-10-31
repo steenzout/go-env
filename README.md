@@ -11,6 +11,22 @@ Library that uses convention to read configuration parameters from the environme
 
 ## environment variables
 
+### app:InfluxDB
+
+- **INFLUXDB_DB**: name of the InfluxDB database.
+- **INFLUXDB_HOST**:  host.
+- **INFLUXDB_PORT**: HTTP API port.
+- **INFLUXDB_ADMIN_PORT**: administrator interface port.
+- **INFLUXDB_GRAPHITE_PORT**: Graphite support port.
+- **INFLUXDB_ADMIN_USER**: administrator account.
+- **INFLUXDB_ADMIN_PASSWORD**: administrator password.
+- **INFLUXDB_USER**: read/write database account.
+- **INFLUXDB_USER_PASSWORD**: password.
+- **INFLUXDB_READ_USER**: database reader account.
+- **INFLUXDB_READ_USER_PASSWORD**: reader password.
+- **INFLUXDB_WRITE_USER**: database writer account.
+- **INFLUXDB_WRITE_USER_PASSWORD**: writer password.
+
 ### app:MySQL
 
 - **MYSQL_DATABASE**: name of the MySQL database.
