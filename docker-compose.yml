@@ -3,8 +3,17 @@ version: '3.1'
 services:
 
   db_mysql:
-    image: mysql:5.6
+    image: mysql:latest
     restart: always
     env_file: docker.env
     ports:
       - '3306:3306'
+
+  db_influxdb:
+    image: influxdb:latest
+    restart: always
+    env_file: docker.env
+    ports:
+      - '8086:8086'
+      - '8083:8083'
+      - '2003:2003'
