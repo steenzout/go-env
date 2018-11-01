@@ -1,5 +1,9 @@
 package env
 
+import (
+	"fmt"
+)
+
 //
 // Copyright 2017-2018 Pedro Salgado
 //
@@ -75,6 +79,16 @@ func GetInfluxDBHost() string {
 // GetInfluxDBPort returns the InfluxDB HTTP API port.
 func GetInfluxDBPort() int {
 	return GetOptionalInt(EnvInfluxDBPort, 8086)
+}
+
+// GetInfluxDBAddress returns the InfluxDB HTTP address.
+func GetInfluxDBAddress() string {
+	return fmt.Sprintf(
+		"%s://%s:%d/",
+		GetInfluxDBProtocol(),
+		GetInfluxDBHost(),
+		GetInfluxDBPort(),
+	)
 }
 
 // GetInfluxDBAdminPort returns the InfluxDB administrator interface port.

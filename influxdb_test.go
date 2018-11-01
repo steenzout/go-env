@@ -68,6 +68,7 @@ func (s InfluxDBTestSuite) TestGetInfluxDB() {
 	s.Equal("only", env.GetInfluxDBReadPassword())
 	s.Equal("writer", env.GetInfluxDBWriteUser())
 	s.Equal("always", env.GetInfluxDBWritePassword())
+	s.Equal("https://example.com:1234", env.GetInfluxDBAddress())
 }
 
 // TestGetInfluxDBDefaultValues check default value behavior of GetInfluxDB*().
