@@ -39,6 +39,7 @@ func (s InfluxDBTestSuite) TestGetInfluxDB() {
 	setUp := func() {
 		os.Setenv(env.EnvInfluxDBDatabase, "test")
 		os.Setenv(env.EnvInfluxDBHost, "example.com")
+		os.Setenv(env.EnvInfluxDBProtocol, "https")
 		os.Setenv(env.EnvInfluxDBPort, "1234")
 		os.Setenv(env.EnvInfluxDBAdminPort, "1235")
 		os.Setenv(env.EnvInfluxDBGraphitePort, "1236")
@@ -55,6 +56,7 @@ func (s InfluxDBTestSuite) TestGetInfluxDB() {
 
 	s.Equal("test", env.GetInfluxDBDatabase())
 	s.Equal("example.com", env.GetInfluxDBHost())
+	s.Equal("https", env.GetInfluxDBProtocol())
 	s.Equal(1234, env.GetInfluxDBPort())
 	s.Equal(1235, env.GetInfluxDBAdminPort)
 	s.Equal(1236, env.GetInfluxDBGraphitePort())
@@ -70,6 +72,7 @@ func (s InfluxDBTestSuite) TestGetInfluxDB() {
 
 // TestGetInfluxDBDefaultValues check default value behavior of GetInfluxDB*().
 func (s ClearEnvSuite) TestGetInfluxDBDefaultValues() {
+	s.Equal("http", env.GetInfluxDBProtocol())
 	s.Equal(8086, env.GetInfluxDBPort())
 	s.Equal(8083, env.GetInfluxDBAdminPort())
 	s.Equal(2003, env.GetInfluxDBGraphitePort())

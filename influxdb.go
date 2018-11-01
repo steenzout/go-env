@@ -22,6 +22,8 @@ const (
 	EnvInfluxDBDatabase = "INFLUXDB_DB"
 	// EnvInfluxDBHost name of the environment variable that contains the InfluxDB host.
 	EnvInfluxDBHost = "INFLUXDB_HOST"
+	// EnvInfluxDBProtocol name of the environment variable that contains the protocol to be used when connecting to InfluxDB.
+	EnvInfluxDBProtocol = "INFLUXDB_PROTOCOL"
 
 	// EnvInfluxDBPort name of the environment variable that contains the InfluxDB HTTP API port.
 	EnvInfluxDBPort = "INFLUXDB_PORT"
@@ -103,6 +105,11 @@ func GetInfluxDBUser() string {
 // GetInfluxDBPassword returns the InfluxDB database read/write account password.
 func GetInfluxDBPassword() string {
 	return GetString(EnvInfluxDBPassword)
+}
+
+// GetInfluxDBProtocol returns the protocol to use when connecting to InfluxDB (default: http).
+func GetInfluxDBProtocol() string {
+	return GetOptionalString(EnvInfluxDBProtocol, "http")
 }
 
 // GetInfluxDBReadUser returns the InfluxDB database read account.
