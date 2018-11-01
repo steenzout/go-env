@@ -22,10 +22,13 @@ const (
 	EnvInfluxDBDatabase = "INFLUXDB_DB"
 	// EnvInfluxDBHost name of the environment variable that contains the InfluxDB host.
 	EnvInfluxDBHost = "INFLUXDB_HOST"
+	// EnvInfluxDBProtocol name of the environment variable that contains the protocol to be used when connecting to InfluxDB.
+	EnvInfluxDBProtocol = "INFLUXDB_PROTOCOL"
 
 	// EnvInfluxDBPort name of the environment variable that contains the InfluxDB HTTP API port.
 	EnvInfluxDBPort = "INFLUXDB_PORT"
 	// EnvInfluxDBAdminPort name of the environment variable that contains the InfluxDB administrator interface port.
+	// The administrator interface is deprecated as of 1.1.0 and will be removed in 1.3.0.
 	EnvInfluxDBAdminPort = "INFLUXDB_ADMIN_PORT"
 	// EnvInfluxDBGraphitePort name of the environment variable that contains the Graphite support port.
 	EnvInfluxDBGraphitePort = "INFLUXDB_GRAPHITE_PORT"
@@ -70,18 +73,18 @@ func GetInfluxDBHost() string {
 }
 
 // GetInfluxDBPort returns the InfluxDB HTTP API port.
-func GetInfluxDBPort() string {
-	return GetString(EnvInfluxDBPort)
+func GetInfluxDBPort() int {
+	return GetOptionalInt(EnvInfluxDBPort, 8086)
 }
 
 // GetInfluxDBAdminPort returns the InfluxDB administrator interface port.
-func GetInfluxDBAdminPort() string {
-	return GetString(EnvInfluxDBAdminPort)
+func GetInfluxDBAdminPort() int {
+	return GetOptionalInt(EnvInfluxDBAdminPort, 8083)
 }
 
 // GetInfluxDBGraphitePort returns the Graphite support port.
-func GetInfluxDBGraphitePort() string {
-	return GetString(EnvInfluxDBGraphitePort)
+func GetInfluxDBGraphitePort() int {
+	return GetOptionalInt(EnvInfluxDBGraphitePort, 2003)
 }
 
 // GetInfluxDBAdminUser returns the InfluxDB administrator account.
@@ -102,6 +105,11 @@ func GetInfluxDBUser() string {
 // GetInfluxDBPassword returns the InfluxDB database read/write account password.
 func GetInfluxDBPassword() string {
 	return GetString(EnvInfluxDBPassword)
+}
+
+// GetInfluxDBProtocol returns the protocol to use when connecting to InfluxDB (default: http).
+func GetInfluxDBProtocol() string {
+	return GetOptionalString(EnvInfluxDBProtocol, "http")
 }
 
 // GetInfluxDBReadUser returns the InfluxDB database read account.
